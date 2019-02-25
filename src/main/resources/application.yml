@@ -1,0 +1,17 @@
+spring.cloud.stream:
+  kafka.streams:
+    bindings:
+      requesti.consumer.application-id: main-processor
+      testOutput.consumer.application-id: test-consumer
+    binder.configuration:
+      default.key.serde: org.springframework.kafka.support.serializer.JsonSerde
+      default.value.serde: org.springframework.kafka.support.serializer.JsonSerde
+      spring.json.value.default.type: com.example.jsonserdeexample.Account
+      spring.json.key.default.type: java.util.UUID
+  bindings:
+    requesti.destination: data-in
+    responseo:
+      destination: data-out
+      producer:
+        use-native-encoding: true
+    testOutput.destination: data-in
